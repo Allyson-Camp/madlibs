@@ -1,14 +1,19 @@
+// onload cunction
 window.onload = function () {
+    //get the form element and set it = to "form"
     let form = document.querySelector("form");
-    form.onsubmit = function (event) {
-        event.preventDefault();
+
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
         const person1Input = document.getElementById("person1Input").value;
         const person2Input = document.getElementById("person2Input").value;
         const animalInput = document.getElementById("animalInput").value;
         const exclamationInput =
             document.getElementById("exclamationInput").value;
-      const verbInput = document.getElementById("verbInput").value;
-         console.log("verbInput = " + verbInput);
+        const verbInput = document.getElementById("verbInput").value;
+        console.log("verbInput = " + verbInput);
         const nounInput = document.getElementById("nounInput").value;
 
         document.querySelector("span#person1a").innerText = person1Input;
@@ -22,12 +27,11 @@ window.onload = function () {
         document.querySelector("span#exclamation").innerText = exclamationInput;
 
         document.querySelector("div#story").removeAttribute("class");
-    };
+    });
 };
 
 // example of rearranging the code:
 // UI Logic
-
 // function getAndSetMadLibValues() {
 //   const person1Input = document.getElementById("person1Input").value;
 //   const person2Input = document.getElementById("person2Input").value;
