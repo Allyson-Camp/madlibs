@@ -1,20 +1,24 @@
-// onload cunction
+// User Interface Logic
+
+function advertisement() {
+    window.alert(
+        "Do you need a new computer? Visit www.superextracomputersales.com to find the best deals!"
+    );
+    document.querySelector("form").removeEventListener("submit", advertisement);
+}
+
 window.addEventListener("load", function () {
-    //get the form element and set it = to "form"
     let form = document.querySelector("form");
     let resetBtn = document.querySelector("button#reset");
     let story = document.querySelector("div#story");
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
+    form.addEventListener("submit", function (event) {
         const person1Input = document.getElementById("person1Input").value;
         const person2Input = document.getElementById("person2Input").value;
         const animalInput = document.getElementById("animalInput").value;
         const exclamationInput =
             document.getElementById("exclamationInput").value;
         const verbInput = document.getElementById("verbInput").value;
-        console.log("verbInput = " + verbInput);
         const nounInput = document.getElementById("nounInput").value;
 
         document.querySelector("span#person1a").innerText = person1Input;
@@ -28,22 +32,15 @@ window.addEventListener("load", function () {
         document.querySelector("span#exclamation").innerText = exclamationInput;
 
         story.removeAttribute("class");
+        event.preventDefault();
     });
 
-    // new event listener for form submit event to show reset button
     form.addEventListener("submit", function () {
-        reset.removeAttribute("class");
+        resetBtn.removeAttribute("class");
     });
 
-    // new event listener for form submit event to show advertisement
-    form.addEventListener("submit", function () {
-        window.alert(
-            "Do you need a new computer? Visit www.superextracomputersales.com to find the best deals!"
-        );
-    });
+    form.addEventListener("submit", advertisement);
 
-    // new event listener for click event on reset button to
-    // reset form values
     resetBtn.addEventListener("click", function () {
         story.setAttribute("class", "hidden");
         document.getElementById("person1Input").value = null;
