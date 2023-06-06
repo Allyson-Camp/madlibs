@@ -1,10 +1,11 @@
 // onload cunction
-window.onload = function () {
+window.addEventListener("load", function () {
     //get the form element and set it = to "form"
     let form = document.querySelector("form");
+    let resetBtn = document.querySelector("button#reset");
+    let story = document.querySelector("div#story");
 
-
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
 
         const person1Input = document.getElementById("person1Input").value;
@@ -26,9 +27,33 @@ window.onload = function () {
         document.querySelector("span#noun").innerText = nounInput;
         document.querySelector("span#exclamation").innerText = exclamationInput;
 
-        document.querySelector("div#story").removeAttribute("class");
+        story.removeAttribute("class");
     });
-};
+
+    // new event listener for form submit event to show reset button
+    form.addEventListener("submit", function () {
+        reset.removeAttribute("class");
+    });
+
+    // new event listener for form submit event to show advertisement
+    form.addEventListener("submit", function () {
+        window.alert(
+            "Do you need a new computer? Visit www.superextracomputersales.com to find the best deals!"
+        );
+    });
+
+    // new event listener for click event on reset button to
+    // reset form values
+    resetBtn.addEventListener("click", function () {
+        story.setAttribute("class", "hidden");
+        document.getElementById("person1Input").value = null;
+        document.getElementById("person2Input").value = null;
+        document.getElementById("animalInput").value = null;
+        document.getElementById("exclamationInput").value = null;
+        document.getElementById("verbInput").value = null;
+        document.getElementById("nounInput").value = null;
+    });
+});
 
 // example of rearranging the code:
 // UI Logic
